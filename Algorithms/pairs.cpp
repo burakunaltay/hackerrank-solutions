@@ -1,62 +1,18 @@
-#include <map>
-#include <set>
-#include <list>
-#include <cmath>
-#include <ctime>
-#include <deque>
-#include <queue>
-#include <stack>
-#include <bitset>
-#include <cstdio>
-#include <limits>
-#include <vector>
-#include <cstdlib>
-#include <numeric>
-#include <sstream>
-#include <iostream>
-#include <algorithm>
-#include <unordered_map>
-using namespace std;
-/* Head ends here */
 
 int pairs(vector < int > a,int k) {
-   
-    std::unordered_map<int, int> map;
+  
+    unordered_set<int> set;
+    
+    int n, val;
+    
+    for (auto i: a)
+        set.insert(i);
+    
+    int ans = 0;
+    for (auto j: set)
+        if (set.find(j + k) != set.end()) ans++;
 
-    for(auto i: a)
-    {
-        int val;
-        if(i >= k)
-            val = i-k;
-        else
-            val = k+i;
-
-        //std::cout<<i<<" "<<val<<std::endl;
-
-        std::pair<int, int> pair1(i, val);
-        map.insert(pair1);
-
-    }
-
-    //std::cout<<"K is "<< k <<std::endl;
-    int res = 0;
-    for(auto i: a)
-    {
-        int val;
-        if(i >= k)
-            val = i-k;
-        else
-            val = k+i;
-
-        if(map.find(val) != map.end())
-        {
-            //std::cout<<i<<" "<<val<<std::endl;
-            map.erase(val);
-            res++;
-        }
-    }
-
-    return res;
+    return ans;
     
 }
 
