@@ -2,8 +2,6 @@
 #include <cstdio>
 #include <vector>
 #include <iostream>
-#include <string>
-#include <algorithm>
 using namespace std;
 
 
@@ -13,7 +11,7 @@ int main() {
     std::getline (std::cin,inputStr);
 
     std::transform(inputStr.begin(), inputStr.end(), inputStr.begin(), ::tolower);
-    
+
     inputStr.erase(std::remove(inputStr.begin(),inputStr.end(),' '),inputStr.end());
 
     int alphabet[26] = {0};
@@ -22,7 +20,7 @@ int main() {
     {
         alphabet[c - 'a']++;
     }
-   
+
     bool isPanagram = true;
     for(auto i: alphabet)
     {
@@ -32,7 +30,7 @@ int main() {
             break;
         }
     }
-    
+
     if(isPanagram)
         std::cout<<"pangram";
     else
